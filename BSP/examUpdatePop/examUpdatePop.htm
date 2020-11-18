@@ -1,0 +1,96 @@
+
+<%@page language="abap"%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%@include file="header.htm" %>
+
+    <style>
+
+    </style>
+
+    <script>
+      $(document).ready(function(){
+        //닫기 이벤트
+        $("#btnClose").click(function(){
+          window.close();
+        });
+
+        //저장
+        $("#btnSave").click(function(){
+          var frm = document.form1;
+          frm.onInputProcessing.value = "save";
+          frm.action = "examUpdatePop.htm";
+          frm.submit();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+  <form name="form1" method="post">
+    <input type="hidden" name="onInputProcessing">
+    <div class="container-fluid p-3">
+      <div class="row">
+        <div class="col">
+          <h1 class="h4">성적 수정</h1>
+        </div>
+      </div>
+      <div class="row">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">ID</th>
+              <td>
+                <input type="text" name="p_id" class="form-control" value="<%=gs_result-id%>" readonly>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">이름</th>
+              <td><input type="text" name="p_name" value="<%=gs_result-name%>" class="form-control" readonly></td>
+            </tr>
+            <tr>
+              <th scope="row">1학기 중간고사</th>
+              <td><input type="text" name="p_mtest1" value="<%=gs_result-mtest1%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">등급(0~9)</th>
+              <td><input type="text" name="p_mtestr1" value="<%=gs_result-mtestr1%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">1학기 기말고사</th>
+              <td><input type="text" name="p_ftest1" value="<%=gs_result-ftest1%>" class="form-control"></td>
+            </tr>
+                 <tr>
+              <th scope="row">등급(0~9)</th>
+              <td><input type="text" name="p_ftestr1" value="<%=gs_result-ftestr1%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">2학기 중간고사</th>
+              <td><input type="text" name="p_mtest2" value="<%=gs_result-mtest2%>" class="form-control"></td>
+            </tr>
+                <tr>
+              <th scope="row">등급(0~9)</th>
+              <td><input type="text" name="p_mtestr2" value="<%=gs_result-mtestr2%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">2학기 기말고사</th>
+              <td><input type="text" name="p_ftest2" value="<%=gs_result-ftest2%>" class="form-control"></td>
+            </tr>
+           <tr>
+              <th scope="row">등급(0~9)</th>
+              <td><input type="text" name="p_ftestr2" value="<%=gs_result-ftestr2%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-center">
+                <button type="button" id="btnSave" class="btn btn-primary">저장</button>
+                <button type="button" id="btnClose" class="btn btn-secondary">닫기</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+    </form>
+  </body>
+</html>

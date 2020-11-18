@@ -1,0 +1,117 @@
+<%@page language="abap"%>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%@include file="header.htm" %>
+
+    <style>
+
+    </style>
+
+    <script>
+      $(document).ready(function(){
+        //닫기 이벤트
+        $("#btnClose").click(function(){
+          window.close();
+        });
+
+        //저장
+        $("#btnSave").click(function(){
+          //입력값 체크
+          var p_id = $("input[name=p_id]").val();
+          if(!$.trim(p_id)){
+            alert("p_id를 입력하세요");
+            return;
+          }
+
+          var p_school = $("input[name=p_school]").val();
+          if(!$.trim(p_school)){
+            alert("p_school를 입력하세요");
+            return;
+          }
+
+          var frm = document.form1;
+          frm.onInputProcessing.value = "save";
+          frm.action = "memberRegPop.htm";
+          frm.submit();
+        });
+
+      });
+    </script>
+  </head>
+
+  <body>
+  <form name="form1" method="post">
+    <input type="hidden" name="onInputProcessing">
+    <div class="container-fluid p-3">
+      <div class="row">
+        <div class="col">
+          <h1 class="h4">신규 등록</h1>
+        </div>
+      </div>
+      <div class="row">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">ID</th>
+              <td>
+                <input type="text" name="p_id" class="form-control" value="<%=p_id%>">
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">학교</th>
+              <td><input type="text" name="p_school" value="<%=p_school%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">학년</th>
+              <td>
+                <select name="p_grade" class="form-control">
+                  <option <%if p_grade eq '1학년'.%>selected<%endif.%>>1</option>
+                  <option <%if p_grade eq '2학년'.%>selected<%endif.%>>2</option>
+                  <option <%if p_grade eq '3학년'.%>selected<%endif.%>>3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">이름</th>
+              <td><input type="text" name="p_name" value="<%=p_name%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">반</th>
+              <td>
+                <select name="p_class" class="form-control">
+                  <option <%if p_class eq 'A1'.%>selected<%endif.%>>A1</option>
+                  <option <%if p_class eq 'A2'.%>selected<%endif.%>>A2</option>
+                  <option <%if p_class eq 'A3'.%>selected<%endif.%>>A3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">생년월일(예:20000101)</th>
+              <td><input type="text" name="p_birth" maxlength="8" value="<%=p_birth%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">주소</th>
+              <td><input type="text" name="p_address" value="<%=p_address%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">연락처</th>
+              <td><input type="tel" name="p_contact" value="<%=p_contact%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <th scope="row">비상연락처</th>
+              <td><input type="tel" name="p_contact2" value="<%=p_contact2%>" class="form-control"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-center">
+                <button type="button" id="btnSave" class="btn btn-primary">저장</button>
+                <button type="button" id="btnClose" class="btn btn-secondary">닫기</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+    </div>
+    </form>
+  </body>
+</html>

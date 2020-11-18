@@ -1,0 +1,1 @@
+TYPES: TYT_zstudent TYPE TABLE OF zstudent.

@@ -1,0 +1,184 @@
+<%@page language="abap" %>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%@include file="header.htm" %>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+            //닫기 이벤트
+            $("#btnClose").click(function () {
+                window.close();
+            });
+            //저장 이벤트
+            $("#btnSave").click(function () {
+                var frm = document.form1;
+                var p_file = frm.p_file.value;
+                var ext = p_file.substring(p_file.length - 3, p_file.length);
+                ext = ext.toLowerCase();
+                if (ext != 'txt') {
+                    alert("txt파일만 등록 가능합니다.");
+                    return;
+                }
+                frm.onInputProcessing.value = 'excel';
+                frm.action = "excelUpload.htm";
+                frm.submit();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form name="form1" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="onInputProcessing">
+        <div class="container-fluid p-3">
+            <div class="row">
+                <div class="col">
+                    <h1 class="h4">EXCEL UPLOAD</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">파일</th>
+                                <td>
+                                    <input type="file" name="p_file" class="form-control" value="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    <button type="button" id="btnSave" class="btn btn-primary">저장</button>
+                                    <button type="button" id="btnClose" class="btn btn-secondary">닫기</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <%
+            if gt_error is initial and gt_zstudent is initial.
+            %>
+            <div class="row">
+                <div class="col">
+                    <h1 class="h4">액셀 SAMPLE</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">학교</th>
+                                <th scope="col">학년</th>
+                                <th scope="col">이름</th>
+                                <th scope="col">반</th>
+                                <th scope="col">생년월일</th>
+                                <th scope="col">주소</th>
+                                <th scope="col">연락처</th>
+                                <th scope="col">비상연락처</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">0001</th>
+                                <td>잠실고</td>
+                                <td>2</td>
+                                <td>이가원</td>
+                                <td>A1</td>
+                                <td>20000101</td>
+                                <td>강동구 둔촌동</td>
+                                <td>01099998888</td>
+                                <td>01077776666</td>
+                            </tr>
+
+                            <%
+                            elseif gt_error is not initial.
+                            %>
+                            <div class="row">
+                                <div class="col">
+                                    <h1 class="h4">에러 내역</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">라인넘버</th>
+                                                <th scope="col">에러내용</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%
+                                            DATA: WA_ERROR TYPE TYS_ERR_TABLE.
+                                            LOOP AT GT_ERROR INTO WA_ERROR.
+                                            %>
+                                            <tr>
+                                                <th scope="row"><%= wa_error-line%></th>
+                                                <td><%= wa_error-error%></td>
+                                            </tr>
+                                            <%
+                                            endloop.
+                                            %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <%
+                                else.
+                                %>
+                                <div class="row">
+                                    <div class="col">
+                                        <h1 class="h5">결과</h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">학교</th>
+                                                    <th scope="col">학년</th>
+                                                    <th scope="col">이름</th>
+                                                    <th scope="col">반</th>
+                                                    <th scope="col">생년월일</th>
+                                                    <th scope="col">주소</th>
+                                                    <th scope="col">연락처</th>
+                                                    <th scope="col">비상연락처</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <%
+                                                data: wa_zstudent type zstudent.
+                                                loop at gt_zstudent into wa_zstudent.
+                                                   %>
+                                                <tr>
+                                                    <th scope="row"><%=wa_zstudent-id%></th>
+                                                    <td><%=wa_zstudent-school%></td>
+                                                    <td><%=wa_zstudent-grade%></td>
+                                                    <td><%=wa_zstudent-name%></td>
+                                                    <td><%=wa_zstudent-class%></td>
+                                                    <td><%=wa_zstudent-birth%></td>
+                                                    <td><%=wa_zstudent-address%></td>
+                                                    <td><%=wa_zstudent-contact%></td>
+                                                    <td><%=wa_zstudent-contact2%></td>
+                                                </tr>
+                                                <%endloop.%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <%
+                            endif.
+                            %>
+                </div>
+    </form>
+</body>
+
+</html>

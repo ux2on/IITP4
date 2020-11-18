@@ -1,0 +1,182 @@
+<%@page language="abap" %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%@include file="header.htm" %>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        var pageid = 'exam';
+        $(document).ready(function () {
+            // 조회
+            $("#btnSearch").click(function (e) {
+                e.preventDefault();
+                doSearch();
+            });
+            // 수정
+            $("button[name=btnUpdate]").click(function (e) {
+                e.preventDefault();
+                doSearch();
+                var id = $(this).parent().parent().find("td").eq(0).text();
+                window.open("examUpdatePop.htm?p_u_id=" + id, "PopupWin", "width=800,height=700");
+            });
+            // 그래프 조회
+            $("#btnChart").click(function (e) {
+                e.preventDefault();
+                doSearch();
+                var id = $(this).parent().parent().find("td").eq(0).text();
+                var frm = document.form1;
+                frm.onInputProcessing.value = "chart";
+                frm.p_chart_id.value = id;
+                frm.action = 'exam.htm';
+                frm.submit();
+            });
+            // 화면 캡쳐
+            $(function () {
+                $("#btnCapture").on("click", function () {
+                    // 캡쳐 라이브러리를 통해서 canvas 오브젝트를 받고 이미지 파일로 리턴
+                    html2canvas(document.querySelector("#capture")).then(canvas => {
+                        saveAs(canvas.toDataURL('image/png'), "exam_chart.png");
+                    });
+                });
+                function saveAs(uri, filename) {
+                    // 캡쳐된 파일을 이미지 파일로
+                    var link = document.createElement('a');
+                    if (typeof link.download === 'string') {
+                        link.href = uri;
+                        link.download = filename;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        window.open(uri);
+                    }
+                }
+            });
+        });
+        function doSearch() {
+            var frm = document.form1;
+            frm.action = 'exam.htm';
+            frm.submit();
+        }
+    </script>
+</head>
+
+<body>
+    <%@include file="top.htm" %>
+    <div class="container-fluid">
+        <div class="row">
+            <%@include file="menu.htm" %>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <div id="capture" style="padding: 10px" ;>
+                    <div class="container" style="position: relative; height:50vh; width:50vw">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <%--        차트 링크--%>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+                    <%--        부트스트랩--%>
+                    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                        crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                        crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                        crossorigin="anonymous"></script>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var num1 = <%= chart_1%>;
+                        var num2 = <%= chart_2%>;
+                        var chart = new Chart(ctx, {
+                            // 차트 종류를 선택
+                            type: 'line',
+                            // 차트를 그릴 데이타 
+                            // ★★★★★ 코드 수정하기 ★★★★★
+                            data: {
+                                labels: ['1학기 중간고사', '1학기 기말고사', '2학기 중간고사', '2학기 기말고사'],
+                                datasets: [{
+                                    label: '신형만',
+                                    backgroundColor: 'transparent',
+                                    borderColor: 'blue',
+                                    data: [
+                                        50, 60, 85, 75
+                                    ]
+                                }]
+                            },
+                            // 옵션
+                            options: {
+                            }
+                        });
+                    </script>
+                </div>
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h2 class="h2">내신성적 조회</h2>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button type="button" id="btnCapture"
+                                class="btn btn-sm btn-outline-secondary">Capture</button>
+                            <button type="button" id="btnPrint" class="btn btn-sm btn-outline-secondary"
+                                onclick="window.print()">Print</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-1"> 이름 검색 </div>
+                    <div class="col-0.8">
+                        <input type="text" name="p_name" value="<%= p_name%>" class="form-contrl" />
+                    </div>
+                    <div class="col-2">
+                        <button type="button" id="btnSearch" class="btn btn-secondary btn-sm">조회</button></div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>이름</th>
+                                <th>1학기 중간고사</th>
+                                <th>등급</th>
+                                <th>1학기 기말고사</th>
+                                <th>등급</th>
+                                <th>2학기 중간고사</th>
+                                <th>등급</th>
+                                <th>2학기 기말고사</th>
+                                <th>등급</th>
+                                <th>평균 내신등급</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                            data: wa_zexam type zexam.
+                            loop at gt_zexam into wa_zexam.
+                            %>
+                            <tr>
+                                <td><%= wa_zexam-id%></td>
+                                <td><%= wa_zexam-name%></td>
+                                <td><%= wa_zexam-mtest1%></td>
+                                <td><%= wa_zexam-mtestr1%></td>
+                                <td><%= wa_zexam-ftest1%></td>
+                                <td><%= wa_zexam-ftestr1%></td>
+                                <td><%= wa_zexam-mtest2%></td>
+                                <td><%= wa_zexam-mtestr2%></td>
+                                <td><%= wa_zexam-ftest2%></td>
+                                <td><%= wa_zexam-ftestr2%></td>
+                                <td><%= wa_zexam-predict%></td>
+                                <td>
+                                    <button type="button" class="btn-outline-secondary btn-sm"
+                                        name="btnUpdate">수정</button>
+                                    <button type="button" class="btn-outline-info btn-sm" name="btnChart">차트</button>
+                                </td>
+                            </tr>
+                            <%
+                             endloop.
+                            %>
+                        </tbody>
+                    </table>
+                </div>
+</body>
+
+</html>
