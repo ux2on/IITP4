@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "sap.study.zc06Proj001.zc06Proj001",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#zc06Proj001-Display",
+        "navigationComponentName": "sap.study.zc06Proj001",
+        "intentSemanticObject": "zc06Proj001",
+        "intentAction": "Display",
+        "html5ApplicationName": "zc06proj001",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "e62128a1-e225-4ff8-8eb8-3becb07236b6-1604551953699"
+        ],
+        "contentPackages": [
+            "ff3a186a-4cfb-4532-a6c4-f2138895d8a3-1604551781474"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "DynamicTile",
+        "title": "Customer Info Change",
+        "subtitle": "",
+        "searchKeywords": "Customer Info Change,",
+        "displayIconUrl": "sap-icon://activity-individual",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "/sap/fiori/zc06proj001/sap/opu/odata/SAP/ZC06_RECORD_ODATA_SRV/record_oDataSet/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Team.6"
+    }
+}

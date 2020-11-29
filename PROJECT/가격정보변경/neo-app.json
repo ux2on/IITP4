@@ -1,0 +1,64 @@
+{
+	"welcomeFile": "/webapp/index.html",
+	"routes": [{
+		"path": "/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/services/userapi",
+		"target": {
+			"type": "service",
+			"name": "userapi"
+		}
+	}, {
+		"path": "/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/webapp/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/webapp/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources"
+		},
+		"description": "SAPUI5 Test Resources"
+	}, {
+		"path": "/sap/opu/odata/SAP/ZC06_KONH_ODATA_SRV/",
+		"target": {
+			"type": "destination",
+			"name": "ZC06_KONH"
+		},
+		"description": "KONH"
+	}, {
+		"path": "/sap/opu/odata/SAP/ZC06_MARA_ODATA_SRV",
+		"target": {
+			"type": "destination",
+			"name": "ZC06_MARA_HUB"
+		},
+		"description": "Mara Hub Table"
+	}, {
+		"path": "/sap/opu/odata/SAP/ZC06_KONH_ROC_ODATA_SRV/",
+		"target": {
+			"type": "destination",
+			"name": "ZC06_Konh_Record"
+		},
+		"description": "Record"
+	}],
+	"sendWelcomeFileRedirect": true
+}

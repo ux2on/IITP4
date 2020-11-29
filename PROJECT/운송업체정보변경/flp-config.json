@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "sap.study.zc06Proj003.zc06Proj003",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#zc06Proj003-Display",
+        "navigationComponentName": "sap.study.zc06Proj003",
+        "intentSemanticObject": "zc06Proj003",
+        "intentAction": "Display",
+        "html5ApplicationName": "zc06proj003",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "49a99563-de9b-40dd-885a-504b52458f20-1605237833348"
+        ],
+        "contentPackages": [
+            "ff3a186a-4cfb-4532-a6c4-f2138895d8a3-1604551781474"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "DynamicTile",
+        "title": "Delivery Info Change",
+        "subtitle": "",
+        "searchKeywords": "Delivery Info Change,",
+        "displayIconUrl": "sap-icon://car-rental",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "/sap/fiori/zc06proj003/sap/opu/odata/SAP/ZC06_SPDM_ODATA_SRV/spdm_oDataSet/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Team.6"
+    }
+}

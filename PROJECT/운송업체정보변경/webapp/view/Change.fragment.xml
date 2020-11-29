@@ -1,0 +1,100 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="sap.study.zc06Proj003.controller.Page" id="Change">
+	<VBox class="sapUiSmallMargin">
+		<f:Form id="FormChangeColumn_oneGroup" editable="true">
+			<f:layout>
+				<f:ColumnLayout/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+				<f:formElements>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Kunnr}" width="100%" id="ipKunnr" editable="false"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="고객 번호"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Name1}" width="100%" id="ipName1" editable="false"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="업체 명"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Telf1}" width="100%" id="ipTelf1"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="전화 번호"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" id="element7">
+				        <f:label>
+				            <Label text="국가" width="100%"/>
+				        </f:label>
+				        <f:fields>
+				            <Input xmlns="sap.m" value="{Land1}" editable="false" id="ipLand1"/>
+				        </f:fields>
+				        </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Pstlz}" width="100%" id="ipPstlz" fieldWidth="100%"/><Button xmlns="sap.m" id="button0" icon="sap-icon://search" width="20%" press="doFindAddress"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="우편 번호"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Ort01}" width="100%" id="ipOrt01"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="시 / 도"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Ort02}" width="100%" id="ipOrt02"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="시 / 군 / 구"/>
+				    </f:label>
+				    </f:FormElement>
+				    <f:FormElement>
+				        <f:fields>
+				            <Input value="{Stras}" width="100%" id="ipStras"/>
+				        </f:fields>
+				    <f:label>
+				        <Label text="상세 주소"/>
+				    </f:label>
+				    </f:FormElement>
+				</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		<f:toolbar>
+		    		    <Toolbar width="100%" id="toolbar2">
+		    <content>
+		        <Title xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" text="운송 업체 정보 변경" width="100%"/>
+		        <HBox xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" width="100%" justifyContent="End">
+		            <items>
+		                <l:HorizontalLayout xmlns:l="sap.ui.layout">
+		                    <l:content>
+		                        <Text xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" text="변경 신청인　"/>
+		                        <Input xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" value="{Cuser}" id="ipCuser"/>
+		                        </l:content>
+		                    
+		                </l:HorizontalLayout>
+		                
+		            </items>
+		            
+		        </HBox>
+		    </content>
+		    </Toolbar>
+		
+		</f:toolbar>
+		</f:Form>
+	</VBox>
+</core:FragmentDefinition>

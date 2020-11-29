@@ -1,0 +1,272 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" controllerName="sap.study.zc06Proj002.controller.View2" height="100%">
+	<Input xmlns="sap.m" value="{Maktx}" id="inputMatnr" visible="false"/>
+	<f:DynamicPage id="dynamicPageId" stickySubheaderProvider="iconTabBar" class="sapUiNoContentPadding" toggleHeaderOnTitleClick="{/titleClickable}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{Maktx}"/>
+				</f:heading>
+				<f:expandedContent>
+					<Label text="{Matnr}" id="MatnrId"/>
+				</f:expandedContent>
+				<f:snappedContent>
+					<Label text="{Matnr}"/>
+				</f:snappedContent>
+				<f:snappedTitleOnMobile>
+					<Title text="Header Title On Phone"/>
+				</f:snappedTitleOnMobile>
+				<f:navigationActions>
+					<Button xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" icon="sap-icon://nav-back" type="Transparent" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'View1'\}\}\}"/>
+				</f:navigationActions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<ObjectAttribute text=" {Name1}" title=" 업체명 "/>
+						<ObjectAttribute title="조건 유형 " text=" {Kschl}"/>
+						<ObjectAttribute title=" 플랜트 " text=" {Vkorg}"/>
+					</layout:VerticalLayout>
+					<layout:VerticalLayout xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" id="layout4">
+						<layout:content>
+							<ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="{path:'Kbetr', formatter: '.formatter.comma'} {Konwa}" title=" 가격 ">
+							</ObjectAttribute>
+							<ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns="sap.m" title=" 조건 단위 " text=" {Kpein} {Kmein}" id="attribute4"/>
+							
+							
+						</layout:content>
+					</layout:VerticalLayout>
+				<layout:content>
+				    <layout:VerticalLayout xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" id="layout4_copy">
+				        <layout:content>
+				            <ObjectAttribute xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns="sap.m" text="{path:'Datab', formatter: '.formatter.dateFormat'} ~ {path:'Datbi', formatter: '.formatter.dateFormat'}" title="　　　효력일"/>
+				            </layout:content>
+				        
+				    </layout:VerticalLayout>
+				</layout:content>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter text="제품 정보 상세 보기" id="tabFilter0">
+						<content>
+							<Table xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" noDataText="Drop column list items here and columns in the area above" items="{MARA>/MARA_oDataSet}" id="table0_copy">
+								<items>
+									<ColumnListItem type="Active" id="item0_1603867392259_copy3_table0_copy_0">
+										<cells>
+											<Text text="{MARA>Mtart}" id="text7"/>
+											<Text text="{MARA>Mbrsh}" id="text8"/>
+											<Text text="{MARA>Matkl}" id="text9"/>
+											<Text text="{MARA>Spart}" id="text10"/>
+											<Text text="{MARA>Brgew} {MARA&gt;Gewei}" id="text11"/>
+											<Text text="{MARA>Ntgew} {MARA&gt;Gewei}" id="text12"/>
+											<Text text="{MARA>Groes}" id="text13"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+								<customData>
+									<sap.ui.core:CustomData xmlns:sap.ui.core="sap.ui.core" key="w5g.dt.editable" value="false" id="data37"/>
+								</customData>
+								<columns>
+									<Column id="column0">
+										<header>
+											<Label text="제품 분류"/>
+										</header>
+									</Column>
+									<Column id="column1">
+										<header>
+											<Label text="산업 부문"/>
+										</header>
+									</Column>
+									<Column id="column2_1603938112743">
+										<header>
+											<Label text="자재 그룹"/>
+										</header>
+									</Column>
+									<Column id="column3">
+										<header>
+											<Label text="제품군"/>
+										</header>
+									</Column>
+									<Column id="column4">
+										<header>
+											<Label text="총 중량"/>
+										</header>
+									</Column>
+									<Column id="column5">
+										<header>
+											<Label text="순 중량"/>
+										</header>
+									</Column>
+									<Column id="column6">
+										<header>
+											<Label text="크기"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter text="제품 가격 조정 신청">
+						<sap.ui.layout.form:Form xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="form0_copy">
+							<sap.ui.layout.form:formContainers>
+								<sap.ui.layout.form:FormContainer id="container0_copy">
+									<sap.ui.layout.form:formElements>
+										<sap.ui.layout.form:FormElement id="element0">
+											<sap.ui.layout.form:fields>
+												<Input value="{Kpein}" width="100%" editable="false"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="조건 가격 결정 단위"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input value="{Kmein}" width="100%" editable="false"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="조건 단위"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input width="100%" id="ipKbetr" value="{Kbetr}"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="가격"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input value="{Konwa}" width="100%" id="input3" editable="false"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="가격 단위"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input value="{Datab}" width="100%" id="ipDatab"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="효력 시작일"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input value="{Datbi}" width="100%" id="ipDatbi"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="효력 종료일"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement>
+											<sap.ui.layout.form:fields>
+												<Input value="{Cuser}" width="100%" id="ipCuser"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="변경 신청인"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement visible="false">
+											<sap.ui.layout.form:fields>
+												<Input value="{Knumh}" width="100%" id="ipKnumh" editable="false"/>
+											</sap.ui.layout.form:fields>
+											<sap.ui.layout.form:label>
+												<Label text="Knumh" id="KnumhId"/>
+											</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" id="element6_copy" visible="false">
+										    <sap.ui.layout.form:fields>
+										        <Input xmlns="sap.m" width="100%" id="ipMaktx" value="{Maktx}" editable="false"/>
+										    </sap.ui.layout.form:fields>
+										    <sap.ui.layout.form:label>
+										        <Label xmlns="sap.m" text="{Maktx}"/>
+										    </sap.ui.layout.form:label>
+										    </sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:sap.ui.layout.form="sap.ui.layout.form" id="element6_copy2" visible="false">
+										    <sap.ui.layout.form:fields>
+										        <Input xmlns="sap.m" value="{Kunnr}" width="100%" editable="false"/>
+										    </sap.ui.layout.form:fields>
+										    <sap.ui.layout.form:label>
+										        <Label xmlns="sap.m" text="{Kunnr}" id="ipKunnr"/>
+										    </sap.ui.layout.form:label>
+										    </sap.ui.layout.form:FormElement>
+										<sap.ui.layout.form:FormElement visible="false">
+										    <sap.ui.layout.form:fields>
+										        <Input value="{Icon}" width="100%" id="check3" editable="false"/>
+										    </sap.ui.layout.form:fields>
+										<sap.ui.layout.form:label>
+										    <Label text="checkicon"/>
+										</sap.ui.layout.form:label>
+										</sap.ui.layout.form:FormElement>
+									</sap.ui.layout.form:formElements>
+								</sap.ui.layout.form:FormContainer>
+							</sap.ui.layout.form:formContainers>
+							<sap.ui.layout.form:layout>
+								<sap.ui.layout.form:ResponsiveGridLayout id="layout3_copy"/>
+							</sap.ui.layout.form:layout>
+						</sap.ui.layout.form:Form>
+						<content>
+							<HBox xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" width="100%" id="hbox0" justifyContent="End">
+								<items>
+									<Button xmlns="sap.m" text="변경 신청" id="button11" type="Emphasized" press="handleSavePress"/>
+								</items>
+							</HBox>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter text="최근 변경 신청 결과 조회" id="tabFilter2">
+						<List id="list9" items="{KONH_REC>/konh_record_odataSet}">
+							<CustomListItem>
+								<HBox>
+									<core:Icon size="2rem" src="sap-icon://message-success" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Positive" visible="{= ${KONH_REC>Icon} === '1' }"/>
+									<core:Icon size="2rem" src="sap-icon://overflow" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Critical" visible="{= ${KONH_REC>Icon} === '3' }"/>
+									<core:Icon size="2rem" src="sap-icon://message-warning" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Negative" visible="{= ${KONH_REC>Icon} === '2' }"/>
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<items>
+										<Label class="history_date" text="{KONH_REC>Redat}" design="Bold"/>
+										<HBox xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" width="100%" id="hbox3">
+										    <items>
+										        <Label xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" class="change_history" text="변경 내역"  width="100%" design="Bold"/>
+										        <Label xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" class="history_text" text="　　가격:"  width="100%" design="Bold"/>
+										        <Label xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" class="history_text" width="100%" text="　{path:'KONH_REC>Kbetr', formatter: '.formatter.kbetrFormat'} {KONH_REC&gt;Konwa}"/>
+										        <Label xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" class="history_text" text=" 　효력 시작일:" width="100%" design="Bold"/>
+										        <Label width="100%" class="history_text" text=" 　 {path:'KONH_REC>Datab', formatter: '.formatter.dateFormat'}"/>
+										        <Label class="history_text" text=" 　효력 종료일:" width="100%" design="Bold"/>
+										        <Label width="100%" class="history_text" text=" 　 {path:'KONH_REC>Datbi', formatter: '.formatter.dateFormat'}"/>
+										        <Label class="history_text" text=" 　변경 신청인:" width="100%" design="Bold"/>
+										        <Label width="100%" class="history_text" text=" 　 {KONH_REC>Cuser}"/>
+										    </items>
+										</HBox>
+										<HBox width="100%" id="hbox2" visible="{= ${KONH_REC>Icon} === '2' }">
+										    <items>
+										        <Label class="history_no" text="거절 사유　　 " width="100%" design="Bold"/>
+										        <Label class="history_text" text="{KONH_REC>Reason}" width="100%"/>
+										    </items>
+										</HBox>
+									</items>
+									</VBox>
+								</HBox>
+							</CustomListItem>
+						</List>
+						<content/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

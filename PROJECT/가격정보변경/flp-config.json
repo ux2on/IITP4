@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "sap.study.zc06Proj002.zc06Proj002",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#zc06Proj002-Display",
+        "navigationComponentName": "sap.study.zc06Proj002",
+        "intentSemanticObject": "zc06Proj002",
+        "intentAction": "Display",
+        "html5ApplicationName": "zc06proj002",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "e62128a1-e225-4ff8-8eb8-3becb07236b6-1604551953699"
+        ],
+        "contentPackages": [
+            "ff3a186a-4cfb-4532-a6c4-f2138895d8a3-1604551781474"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "DynamicTile",
+        "title": "Product Price Change",
+        "subtitle": "",
+        "searchKeywords": "Product Price Change,",
+        "displayIconUrl": "sap-icon://lead",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "/sap/fiori/zc06proj002/sap/opu/odata/SAP/ZC06_KONH_ODATA_SRV/Konh_odataSet/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Team.6"
+    }
+}

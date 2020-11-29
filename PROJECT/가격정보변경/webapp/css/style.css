@@ -1,0 +1,31 @@
+/* View1 타이틀 */
+.view1Title{
+	color: black;
+	font-size : large;
+}
+
+
+/* 날짜 */
+.history_date {
+    color: #080404d1;
+}
+
+
+/* 변경내역 */
+.change_history {
+    color: #2a61b5;
+    font-size: .700rem;
+}
+
+
+/* 거절사유 */
+.history_no {
+    color: #be3131;
+    font-size: .700rem;
+}
+
+
+/* 변경 내역 텍스트 */
+.history_text {
+    font-size: .700rem;
+}

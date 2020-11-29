@@ -1,0 +1,52 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.study.zc06Proj002.controller.View1" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="구매 제품 조회" titleLevel="H2" backgroundDesign="Transparent" showSubHeader="false">
+					<content>
+					    <Table noDataText="Drop column list items here and columns in the area above" id="table0" items="{/Konh_odataSet}">
+					        <items>
+					            <ColumnListItem xmlns:action="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" type="Navigation" id="item0" press="action" action:wiring="\{'press':\{'navigation':\{'routeName':'View2_binded','keys':[\{'name':'Maktx','type':'Edm.String'\},\{'name':'Knumh','type':'Edm.String'\},\{'name':'Kunnr','type':'Edm.String'\}]\}\}\}">
+					                <cells>
+					                    <Text text="{Maktx}" id="text0"/>
+					                    <Text text="{Kunnr}" visible="false"/>
+					                    <Text text="{path:'Kbetr', formatter: '.formatter.comma'} {Konwa}" id="text2"/>
+					                    <Text xmlns="sap.m" text="{Name1}" id="name1Check" visible="false"/>
+					                    </cells>
+					            </ColumnListItem>
+					        </items>
+					        <columns>
+					            <Column id="column0">
+					                <header>
+					                    <Label text="제품명"/>
+					                </header>
+					            </Column>
+					            <Column id="column1">
+					                <header>
+					                    <Label text=" " id="label1"/>
+					                </header>
+					            </Column>
+					            <Column id="column2">
+					                <header>
+					                    <Label text="가격"/>
+					                </header>
+					            </Column></columns>
+					        <headerToolbar>
+					            <OverflowToolbar xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns="sap.m" id="toolbar1">
+					                <ToolbarSpacer/>
+					                <SearchField width="17.5rem" placeholder="제품명 검색" id="searchField1" search="handleSearchField"/>
+					                </OverflowToolbar>
+					        </headerToolbar></Table>
+					</content>
+				<customHeader>
+				    <Bar class="barColor">
+				        <contentMiddle>
+				            <Title xmlns="sap.m" class="view1Title" text="구매 제품 조회"/>
+				        </contentMiddle>
+				    </Bar>
+				</customHeader>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

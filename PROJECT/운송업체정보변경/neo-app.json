@@ -1,0 +1,58 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata/SAP/ZC06_SPDM_ODATA_SRV/",
+      "target": {
+        "type": "destination",
+        "name": "ZC06_SPDM"
+      },
+      "description": "ì´ì¡ìì²´"
+    },
+    {
+      "path": "/sap/opu/odata/SAP/ZC06_RECORD_ODATA_SRV",
+      "target": {
+        "type": "destination",
+        "name": "ZC06_RECORD"
+      },
+      "description": "íì¤í¸ì©"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

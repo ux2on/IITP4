@@ -1,0 +1,149 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "sap.study.zc06Proj001",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZC06_RECORD": {
+				"uri": "/sap/opu/odata/SAP/ZC06_RECORD_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZC06_RECORD/metadata.xml"
+				}
+			},
+			"ZC06_KNA1": {
+				"uri": "/sap/opu/odata/SAP/ZC06_KNA1_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZC06_KNA1/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "sap.study.zc06Proj001.view.Page",
+			"type": "XML",
+			"async": true,
+			"id": ""
+		},
+		"dependencies": {
+			"minUI5Version": "1.58.3",
+			"libs": {
+				"sap.f": {
+					"minVersion": ""
+				},
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.study.zc06Proj001.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZC06_KNA1",
+				"preload": true
+			},
+			"RECORD": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZC06_RECORD",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "sap.study.zc06Proj001.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RoutePage",
+					"pattern": "RoutePage",
+					"target": [
+						"TargetPage"
+					]
+				}
+			],
+			"targets": {
+				"TargetPage": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Page",
+					"viewName": "Page"
+				},
+				"Sample": {
+					"viewType": "XML",
+					"viewName": "Sample"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"viewName": "Detail"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

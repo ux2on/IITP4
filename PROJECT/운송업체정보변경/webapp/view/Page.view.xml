@@ -1,0 +1,17 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" height="100%" controllerName="sap.study.zc06Proj003.controller.Page">
+	<App>
+		<pages>
+			<Page id="page">
+				<content>
+				</content>
+			<headerContent>
+			    <Button xmlns="sap.m" id="edit" icon="sap-icon://edit" press="handleEditPress"/>
+			    <Button id="save" text="변경 신청" type="Emphasized" visible="false" press="handleSavePress"/>
+				<Button id="cancel" text="되돌아 가기" visible="false" press="handleCancelPress"/>
+			</headerContent>
+			</Page>
+		</pages>
+	</App>
+	
+
+</mvc:View>

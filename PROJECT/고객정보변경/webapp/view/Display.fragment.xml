@@ -1,0 +1,123 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" controllerName="sap.study.zc06Proj001.controller.Page" id="Display">
+	<VBox class="sapUiSmallMargin">
+		<items>
+		    <VBox width="100%" direction="Column">
+			<items>
+				<f:Form xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" editable="false" id="form0">
+					<f:title>
+						<core:Title xmlns:core="sap.ui.core" text="고객 정보 조회"/>
+					</f:title>
+					<f:layout>
+						<f:ColumnLayout/>
+					</f:layout>
+					<f:formContainers>
+						<f:FormContainer>
+							<f:formElements>
+								<f:FormElement label="고객 번호">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Kunnr}" id="kunnrId"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="업체명">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Name1}" id="NameV"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="전화 번호">
+									<f:fields>
+										<Text xmlns="sap.m" text="{path:'Telf1', formatter: '.formatter.phoneFormat'}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="국가">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Land1}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="우편 번호">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Pstlz}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="시 / 도">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Ort01}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="시 / 군 / 구">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Ort02}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement label="상세 주소">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Stras}"/>
+									</f:fields>
+								</f:FormElement>
+								<f:FormElement xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" label="아이콘" id="element9" visible="false">
+									<f:fields>
+										<Text xmlns="sap.m" text="{Icon}" id="Icon3check"/>
+									</f:fields>
+								</f:FormElement>
+							</f:formElements>
+						</f:FormContainer>
+					</f:formContainers>
+				</f:Form>
+				<l:HorizontalLayout/>
+				<l:HorizontalLayout/>
+				<l:HorizontalLayout/>
+				<l:HorizontalLayout/><Panel xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" width="auto" expandable="true" expanded="true" id="panel0" content="{RECORD>/record_oDataSet}">
+					<headerToolbar>
+						<Toolbar>
+							<Title text="최근 변경 신청 결과 조회"/>
+							<ToolbarSpacer/>
+							<content/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<CustomListItem id="list0">
+							<content>
+								<HBox xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+									<core:Icon size="2rem" src="sap-icon://message-success" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Positive" visible="{= ${RECORD>Icon} === '1' }"/>
+									<core:Icon size="2rem" src="sap-icon://overflow" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Critical" visible="{= ${RECORD>Icon} === '3' }"/>
+									<core:Icon size="2rem" src="sap-icon://message-warning" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" color="Negative" visible="{= ${RECORD>Icon} === '2' }"/>
+									<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+										<HBox xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" id="hbox1_1604452665709">
+											<items>
+												<Label class="history_date" width="100%" design="Bold" text="{RECORD>Redat}"/>
+												<Label text=" " width="100%" design="Bold"/>
+											</items>
+										</HBox>
+										<HBox xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" id="hbox1">
+											<items>
+												<Label labelFor="myColumn" design="Bold" class="change_history" text="변경 내역" wrapping="true"/>
+												<Label class="history_text" text="　　업체명: " width="100%" design="Bold"/>
+												<Label class="history_text" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" text=" 　 {RECORD>Name1}"/>
+												<Label class="history_text" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m" text=" 　전화 번호: " width="100%" design="Bold"/>
+												<Label class="history_text" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text=" 　 {path:'RECORD>Telf1', formatter: '.formatter.phoneFormat'}" width="100%"/>
+												<Label class="history_text" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m" text="  　우편 번호: " width="100%" design="Bold"/>
+												<Label class="history_text" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" text="  　{RECORD>Pstlz}" width="100%"/>
+												<Label class="history_text" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m" text="  　주소: " width="100%" design="Bold"/>
+												<Label xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" class="history_text" text=" 　 {RECORD>Ort01} {RECORD&gt;Ort02} {RECORD>Stras}" width="100%"/>
+												<Label class="history_text" text="  　변경 요청인: " width="100%" design="Bold"/>
+												<Label class="history_text" text=" 　 {RECORD>Cuser}" width="100%"/>
+											</items>
+										</HBox>
+										<HBox xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" width="100%" visible="{= ${RECORD>Icon} === '2' }">
+											<items>
+												<Label labelFor="myColumn" class="history_no" design="Bold" text="거절 사유" wrapping="true"/>
+												<Label class="history_text" text="　　{RECORD>Reason}" width="100%"/>
+											</items>
+										</HBox>
+										<items/>
+									</VBox>
+									<items/>
+								</HBox>
+							</content>
+						</CustomListItem>
+					</content>
+				</Panel>
+			</items>
+		</VBox>
+		</items>
+	</VBox>
+</core:FragmentDefinition>
